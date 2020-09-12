@@ -1,0 +1,1 @@
+SELECT * FROM frota_veiculos.veiculos;
