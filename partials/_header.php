@@ -4,9 +4,6 @@
         <nav class="menu">
             <ul>
                 <li>
-                    <a href="/">Carros</a>
-                </li>
-                <li>
                     <a href="/veiculos">Veículos</a>
                 </li>
                 <li>
@@ -14,7 +11,8 @@
                 </li>
             </ul>
         </nav>
-        <aside class="autenticacao">
-            <a href="/">Usuário</a>
+        <aside class="menu float-right">
+            <a href="/usuario/sign_in.php">Login</a>
+            <a href="/usuario/newUser.php">Cadastrar</a>
         </aside>
 </header>
