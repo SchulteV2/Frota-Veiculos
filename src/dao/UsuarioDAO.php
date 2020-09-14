@@ -17,7 +17,7 @@
             return $stmt; 
         }
 
-        public static function logar($email) {
+        public static function getByEmail($email) {
             $con = ConnectionFactory::getConnection();
 
             $stmt = $con->prepare("SELECT * FROM usuario WHERE email = :email");

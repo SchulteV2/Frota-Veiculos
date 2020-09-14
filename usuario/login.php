@@ -3,10 +3,10 @@
 
     use App\dao\UsuarioDAO;
 
-    $email =  $_GET['email'];
-    $senha =  $_GET['password'];
+    $email =  $_REQUEST['email'];
+    $senha =  $_REQUEST['password'];
 
-    $stmt = UsuarioDAO::logar($email);
+    $stmt = UsuarioDAO::getByEmail($email);
 
     $user = $stmt->fetch(PDO::FETCH_OBJ);
 
