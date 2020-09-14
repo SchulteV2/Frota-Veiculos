@@ -1,5 +1,6 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
     
     use App\dao\MarcasDAO;
 
@@ -21,6 +22,7 @@
         <div class="Card">
             <div class="Title">Lista de Marcas</div>
             <div class="Content">
+                <?php include("partials/_flash_messages.php") ?>
                 <a href="/marcas/new.php" class="btn btn-success mr-1 mb-2 float-right">Cadastrar Nova Marca</a>
                 <table class="table">
                     <tr>

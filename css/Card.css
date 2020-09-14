@@ -42,3 +42,8 @@ table {
 th, td {
     text-align: center;
 }
+
+ul.alert li {
+    text-align: center;
+    list-style-type: none;
+}

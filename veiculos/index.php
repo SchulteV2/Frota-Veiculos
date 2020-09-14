@@ -1,5 +1,6 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
 
     use App\dao\VeiculosDAO;
 
@@ -20,6 +21,7 @@
         <div class="Card">
             <div class="Title">Lista da Frota</div>
             <div class="Content">
+                <?php include("partials/_flash_messages.php") ?>
                 <a href="/veiculos/new.php" class="btn btn-success mr-1 mb-2 float-right">Cadastrar Novo Veículo</a>
                 <table class="table">
                     <tr>

@@ -1,5 +1,7 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +20,7 @@
         <div class="Card">
             <div class="Title">Login</div>
                 <div class="Content">
+                <?php include("partials/_flash_messages.php") ?>
                     <form action="/usuario/login.php" method="POST">
                         <div>
                             <label for="email">Email:</label>
