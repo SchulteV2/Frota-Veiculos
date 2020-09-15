@@ -4,8 +4,6 @@
     use \PDO;
 
     class UsuarioDAO {
-
-
         public static function create($email, $senha) {
             $con = ConnectionFactory::getConnection();
 
@@ -22,6 +20,16 @@
 
             $stmt = $con->prepare("SELECT * FROM usuario WHERE email = :email");
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return $stmt;
+        }
+
+        public static function getById($id) {
+            $con = ConnectionFactory::getConnection();
+
+            $stmt = $con->prepare("SELECT id, email FROM usuario WHERE id = :id LIMIT 1");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
             return $stmt;
