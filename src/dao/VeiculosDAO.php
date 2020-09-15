@@ -45,7 +45,7 @@
             $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
             $stmt->bindParam(':ano', $ano, PDO::PARAM_STR);
             $stmt->bindParam(':preco', $preco, PDO::PARAM_STR);
-            $stmt->bindParam(':id_marca', $id_marca, PDO::PARAM_STR);
+            $stmt->bindParam(':id_marca', $id_marca, PDO::PARAM_INT);
             $stmt->execute();
     
             return $stmt; 
