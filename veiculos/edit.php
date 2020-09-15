@@ -5,6 +5,7 @@
 
     use App\dao\MarcasDAO;
     use App\dao\VeiculosDAO;
+    use App\utils\FlashMessages;
 
     $id = $_GET['id'];
 
@@ -12,6 +13,12 @@
 
     $stmt_veiculo = VeiculosDAO::getById($id);
     $veiculos = $stmt_veiculo->fetch(PDO::FETCH_OBJ);
+
+    if(! $_SESSION['logado']) {
+        FlashMessages::setMessage("Você precisa estar logado para executar essa ação.", "error");
+        header("Location: /usuario/login.php");
+        exit(0);
+    }
 ?>
 
 <!DOCTYPE html>

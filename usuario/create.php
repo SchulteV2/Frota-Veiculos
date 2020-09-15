@@ -12,6 +12,6 @@
 
     $stmt = UsuarioDAO::create($email, $senha);
     FlashMessages::setMessage("Usuário criado com sucesso!");
-    header("Location: /usuario/sign_in.php")
+    header("Location: /usuario/login.php")
 
 ?>

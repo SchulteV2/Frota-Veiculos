@@ -3,6 +3,13 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
     
     use App\dao\MarcasDAO;
+    use App\utils\FlashMessages;
+
+    if(! $_SESSION['logado']) {
+        FlashMessages::setMessage("Você precisa estar logado para executar essa ação.", "error");
+        header("Location: /usuario/login.php");
+        exit(0);
+    }
 
     $stmt = MarcasDAO::getAll();
 ?>

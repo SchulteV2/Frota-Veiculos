@@ -3,8 +3,14 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
 
     use App\dao\VeiculosDAO;
+    use App\utils\FlashMessages;
 
     $stmt = VeiculosDAO::getAll();
+    if(! $_SESSION['logado']) {
+        FlashMessages::setMessage("Você precisa estar logado para executar essa ação.", "error");
+        header("Location: /usuario/login.php");
+        exit(0);
+    }
 
 ?>
 
