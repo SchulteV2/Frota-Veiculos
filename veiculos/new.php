@@ -36,17 +36,17 @@
 
                         <div class="form-group row">
                             <label for="nome">Nome do Veículo:</label>
-                            <input type="text" class="form-control" id="nome" name="nome">
+                            <input type="text" class="form-control" id="nome" name="nome" required>
                         </div>
 
                         <div class="form-group row">
                             <label for="ano">Ano do Veículo:</label>
-                            <input type="text" class="form-control" id="ano" name="ano">
+                            <input type="text" class="form-control" id="ano" name="ano" required>
                         </div>
 
                         <div class="form-group row">
                             <label for="preco">Preço do Veículo:</label>
-                            <input type="text" class="form-control" id="preco" name="preco">
+                            <input type="text" class="form-control" id="preco" name="preco" required>
                         </div>
                         
                         <div class="form-group row">

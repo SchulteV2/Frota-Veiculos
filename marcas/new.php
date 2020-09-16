@@ -34,7 +34,7 @@
                     <form action="/marcas/create.php" method="POST">
                         <div class="form-group">
                             <label for="nome">Nome da Marca:</label>
-                            <input type="text" class="form-control" id="nome" name="nome">
+                            <input type="text" class="form-control" id="nome" name="nome" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </form>
