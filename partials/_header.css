@@ -47,12 +47,6 @@
     padding: 15px;
 }
 
-.autenticacao {
-    float: right;
-    height: 80px;
-    padding: 25px;
-}
-
 .menu a:hover,
 .menu a.selected {
     background-color: #4faddb;
