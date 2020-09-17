@@ -5,11 +5,14 @@
 
     use App\dao\MarcasDAO;
     use App\dao\VeiculosDAO;
+    use App\dao\UsuarioDAO;
     use App\utils\FlashMessages;
 
     $id = $_GET['id'];
 
-    $stmt_marcas = MarcasDAO::getAll();
+    $stmt_use = UsuarioDAO::getByEmail($_SESSION['user']);
+    $user = $stmt_use->fetch(PDO::FETCH_OBJ);
+    $stmt_marcas = MarcasDAO::getByUser($user->id);
 
     $stmt_veiculo = VeiculosDAO::getById($id);
     $veiculos = $stmt_veiculo->fetch(PDO::FETCH_OBJ);
@@ -42,6 +45,9 @@
                     <form action="/veiculos/update.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $veiculos->id ?>">
 
+                        <div class="form-group row">
+                            <input type="text" class="form-control" hidden id="id_usuario" name="id_usuario" value="<?= $user->id ?>">
+                        </div>
                         <div class="form-group row">
                             <label for="nome_veiculo">Nome do Veículo:</label>
                             <input type="text" class="form-control" id="nome" name="nome" value="<?= $veiculos->nome ?>">

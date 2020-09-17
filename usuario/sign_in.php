@@ -14,8 +14,8 @@
 
     if($user) {
         if(password_verify($senha, $user->senha)) {
-            session_start();
-            $_SESSION["logado"] = true ;
+            $_SESSION["logado"] = true;
+            $_SESSION["user"] = $email;
             FlashMessages::setMessage("Usuário: " . $user->email . ", logou com sucesso!");
             header("Location: /veiculos/");
         } else {

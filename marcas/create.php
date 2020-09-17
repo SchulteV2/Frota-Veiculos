@@ -6,8 +6,9 @@
     use App\utils\FlashMessages;
 
     $nome =  $_POST['nome'];
+    $id_usuario = $_POST['id_usuario'];
 
-    $stmt = MarcasDAO::create($nome);
+    $stmt = MarcasDAO::create($nome, $id_usuario);
     FlashMessages::setMessage("Marca adicionada com sucesso!");
 
     header("Location: /marcas/")

@@ -4,9 +4,14 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
 
     use App\dao\MarcasDAO;
+    use App\dao\UsuarioDAO;
     use App\utils\FlashMessages;
-    $stmt = MarcasDAO::getAll();
-
+    
+    $stmt_use = UsuarioDAO::getByEmail($_SESSION['user']);
+    $user = $stmt_use->fetch(PDO::FETCH_OBJ);
+    
+    $stmt = MarcasDAO::getByUser($user->id);
+    
     if(! $_SESSION['logado']) {
         FlashMessages::setMessage("Você precisa estar logado para executar essa ação.", "error");
         header("Location: /usuario/login.php");
@@ -47,6 +52,9 @@
                         <div class="form-group row">
                             <label for="preco">Preço do Veículo:</label>
                             <input type="text" class="form-control" id="preco" name="preco" required>
+                        </div>
+                        <div class="form-group row">
+                            <input type="text" class="form-control" hidden id="id_usuario" name="id_usuario" value="<?= $user->id ?>">
                         </div>
                         
                         <div class="form-group row">

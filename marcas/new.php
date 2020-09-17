@@ -4,6 +4,10 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
 
     use App\utils\FlashMessages;
+    use App\dao\UsuarioDAO;
+
+    $stmt_use = UsuarioDAO::getByEmail($_SESSION['user']);
+    $user = $stmt_use->fetch(PDO::FETCH_OBJ);
 
     if(! $_SESSION['logado']) {
         FlashMessages::setMessage("Você precisa estar logado para executar essa ação.", "error");
@@ -35,6 +39,9 @@
                         <div class="form-group">
                             <label for="nome">Nome da Marca:</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" hidden id="id_usuario" name="id_usuario" value="<?= $user->id ?>">
                         </div>
                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </form>

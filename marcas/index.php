@@ -3,15 +3,19 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
     
     use App\dao\MarcasDAO;
+    use App\dao\UsuarioDAO;
     use App\utils\FlashMessages;
+
+    $stmt_use = UsuarioDAO::getByEmail($_SESSION['user']);
+    $user = $stmt_use->fetch(PDO::FETCH_OBJ);
+
+    $stmt = MarcasDAO::getByUser($user->id);
 
     if(! $_SESSION['logado']) {
         FlashMessages::setMessage("Você precisa estar logado para executar essa ação.", "error");
         header("Location: /usuario/login.php");
         exit(0);
     }
-
-    $stmt = MarcasDAO::getAll();
 ?>
 
 <!DOCTYPE html>

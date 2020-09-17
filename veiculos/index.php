@@ -3,9 +3,13 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
 
     use App\dao\VeiculosDAO;
+    use App\dao\UsuarioDAO;
     use App\utils\FlashMessages;
 
-    $stmt = VeiculosDAO::getAll();
+    $stmt_use = UsuarioDAO::getByEmail($_SESSION['user']);
+    $user = $stmt_use->fetch(PDO::FETCH_OBJ);
+
+    $stmt = VeiculosDAO::getByUser($user->id);
     if(! $_SESSION['logado']) {
         FlashMessages::setMessage("Você precisa estar logado para executar essa ação.", "error");
         header("Location: /usuario/login.php");
@@ -38,21 +42,19 @@
                         <th>Marca</th>
                         <th>Ações</th>
                     </tr>
-
-                    <?php while ($row = $stmt->fetch(PDO::FETCH_OBJ)) : ?>
+                    <?php while ($row = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
                         <tr>
                             <td><?= $row->id ?></td>
                             <td><?= $row->nome ?></td>
                             <td><?= $row->ano ?></td>
-                            <td><?= $row->preco ?></td>
+                            <td>R$ <?= $row->preco ?></td>
                             <td><?= $row->nome_marca ?></td>
                             <td>
                                 <a href="/veiculos/edit.php?id=<?= $row->id ?>" class="btn btn-sm btn-warning mr-1">Editar</a>
                                 <a href="/veiculos/destroy.php?id=<?= $row->id ?>" class="btn btn-sm btn-danger" onclick="return confirm('Você realmente deseja excluir o veículo:')">Excluir</a>
                             </td>
                         </tr>
-                    <?php endwhile ?>
-
+                    <?php } ?>
                 </table>
             </div>
         </div>

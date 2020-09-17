@@ -10,7 +10,7 @@
 
     $stmt = MarcasDAO::delete($id);
 
-    FlashMessages::setMessage("Marca excluida com sucesso!");
+    FlashMessages::setMessage("Marca e veículos excluidos com sucesso!");
     header("Location: /marcas/")
 
 ?>

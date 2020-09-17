@@ -7,8 +7,9 @@
 
     $id = $_POST['id'];
     $nome =  $_POST['nome'];
+    $id_usuario = $_POST['id_usuario'];
 
-    $stmt = MarcasDAO::update($id, $nome);
+    $stmt = MarcasDAO::update($id, $nome, $id_usuario);
     FlashMessages::setMessage("Marca editada com sucesso!");
 
     header("Location: /marcas/")

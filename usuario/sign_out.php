@@ -4,7 +4,6 @@
 
     use App\utils\FlashMessages;
 
-    session_start();
     unset($_SESSION['logado']);
     session_destroy();
     
