@@ -13,10 +13,10 @@ use App\dao\UsuarioDAO;
     <nav class="menu">
         <ul>
             <li>
-                <a href="/veiculos">Veículos</a>
+                <a href="/marcas">Marca</a>
             </li>
             <li>
-                <a href="/marcas">Marca</a>
+                <a href="/veiculos">Veículos</a>
             </li>
         </ul>
     </nav>
