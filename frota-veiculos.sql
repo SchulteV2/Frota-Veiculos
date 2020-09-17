@@ -25,19 +25,12 @@ DROP TABLE IF EXISTS `marcas`;
 CREATE TABLE `marcas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_usuario` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_USUARIO_idx` (`id_usuario`),
+  CONSTRAINT `FK_USUARIO_M` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `marcas`
---
-
-LOCK TABLES `marcas` WRITE;
-/*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
-INSERT INTO `marcas` VALUES (2,'Audi'),(3,'Mercedes'),(4,'Fiat'),(9,'BMW');
-/*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `usuario`
@@ -51,18 +44,8 @@ CREATE TABLE `usuario` (
   `email` varchar(255) DEFAULT NULL,
   `senha` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario`
---
-
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'coco@gmail.com',NULL),(2,'ss@gmail.com','123456'),(3,'Anclund1980@einrot.com','123456'),(4,'coco@gmail.comw','$2y$10$tcxInmgxmnoNxtt1pKM5ruh7yIv5kSO7kUxygKJQcQegphR5HtZAq'),(5,'oloco@oloco.com','$2y$10$SMaEHQKFRlUV/Goh7RslseYj9aIoHCVi0U02/yVxHq2bPEkAiaX.C'),(6,'Heyerinty1952@einrot.com','$2y$10$M5.X7eTDXwLotplWHjBLGuFDVsOcJXuptsDk41u9ABV4tgdDV7UMa');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `veiculos`
@@ -75,24 +58,16 @@ CREATE TABLE `veiculos` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   `ano` varchar(45) DEFAULT NULL,
-  `url_imagem_veiculo` varchar(250) DEFAULT NULL,
   `preco` decimal(10,2) DEFAULT NULL,
   `id_marca` int NOT NULL,
+  `id_usuario` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_MARCA_idx` (`id_marca`),
-  CONSTRAINT `FK_MARCA` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK_USUARIO_idx` (`id_usuario`),
+  CONSTRAINT `FK_MARCA` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_USUARIO` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `veiculos`
---
-
-LOCK TABLES `veiculos` WRITE;
-/*!40000 ALTER TABLE `veiculos` DISABLE KEYS */;
-INSERT INTO `veiculos` VALUES (1,'R8','2020',NULL,900.00,2),(6,'X5','2020',NULL,800.00,9);
-/*!40000 ALTER TABLE `veiculos` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -103,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-14 17:31:53
+-- Dump completed on 2020-09-17 17:31:34
