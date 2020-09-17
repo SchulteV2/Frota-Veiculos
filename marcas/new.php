@@ -1,5 +1,4 @@
 <?php 
-
     require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
     require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
 
@@ -14,7 +13,6 @@
         header("Location: /usuario/login.php");
         exit(0);
     }
-
 ?>
 
 <!DOCTYPE html>

@@ -8,8 +8,9 @@
 
     $stmt_use = UsuarioDAO::getByEmail($_SESSION['user']);
     $user = $stmt_use->fetch(PDO::FETCH_OBJ);
-
+    
     $stmt = VeiculosDAO::getByUser($user->id);
+
     if(! $_SESSION['logado']) {
         FlashMessages::setMessage("Você precisa estar logado para executar essa ação.", "error");
         header("Location: /usuario/login.php");
@@ -20,11 +21,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <?php include("./partials/_head.php") ?>
     <title>Veiculos</title>
     <?php include("./partials/_javascript_import.php") ?>
 </head>
+
 <body>
     <?php include("partials/_header.php") ?>
     <div class="cardbox">
@@ -58,7 +61,7 @@
                 </table>
             </div>
         </div>
-
     </div>
 </body>
+
 </html>

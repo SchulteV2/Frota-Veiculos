@@ -12,5 +12,4 @@
     FlashMessages::setMessage("Marca adicionada com sucesso!");
 
     header("Location: /marcas/")
-
 ?>

@@ -14,5 +14,4 @@
     VeiculosDAO::create($nome, $ano, $preco, $id_marca, $id_usuario);
     FlashMessages::setMessage("Veículo adicionado com sucesso!");
     header("Location: /veiculos/")
-
 ?>

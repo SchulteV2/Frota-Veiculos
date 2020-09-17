@@ -28,6 +28,7 @@
                                     "ON (v.id_usuario = u.id)" .
                                     "WHERE v.id_usuario = ${userId}");
             $stmt->execute();
+            
             return $stmt;
         }
 

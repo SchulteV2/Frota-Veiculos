@@ -9,7 +9,6 @@
         header("Location: /veiculos");
         exit(0);
     }
-
 ?>
 
 <!DOCTYPE html>

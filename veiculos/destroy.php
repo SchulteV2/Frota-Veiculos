@@ -10,5 +10,4 @@
     $stmt = VeiculosDAO::delete($id);
     FlashMessages::setMessage("Veículo excluido com sucesso!");
     header("Location: /veiculos/")
-
 ?>

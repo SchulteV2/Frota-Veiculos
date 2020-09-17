@@ -1,8 +1,6 @@
 <?php
-
-require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
-
+    require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
 ?>
 
 <link rel="stylesheet" href="/partials/_header.css" />

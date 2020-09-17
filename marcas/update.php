@@ -13,5 +13,4 @@
     FlashMessages::setMessage("Marca editada com sucesso!");
 
     header("Location: /marcas/")
-
 ?>
