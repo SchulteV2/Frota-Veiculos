@@ -3,8 +3,6 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/bootstrap.php';
 
-use App\dao\UsuarioDAO;
-
 ?>
 
 <link rel="stylesheet" href="/partials/_header.css" />
