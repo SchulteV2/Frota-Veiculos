@@ -13,6 +13,16 @@
 
             return $stmt;
         }
+        public static function getByUser($userId) {
+            $con = ConnectionFactory::getConnection();
+            $stmt = $con->prepare("SELECT m.* FROM marcas m " . 
+                                "JOIN usuario u " .
+                                "ON (m.id_usuario = u.id )" .
+                                "WHERE m.id_usuario = ${userId}");
+            $stmt->execute();
+
+            return $stmt;
+        }
 
         public static function getById($id) {
             $con = ConnectionFactory::getConnection();
@@ -24,21 +34,23 @@
             return $stmt;
         }
 
-        public static function create($nome_marca) {
+        public static function create($nome_marca, $id_usuario) {
             $con = ConnectionFactory::getConnection();
 
-            $stmt = $con->prepare("INSERT INTO marcas (nome) VALUES (:nome)");
+            $stmt = $con->prepare("INSERT INTO marcas (nome, id_usuario) VALUES (:nome, :id_usuario)");
             $stmt->bindParam(':nome', $nome_marca, PDO::PARAM_STR);
+            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
             $stmt->execute();
 
             return $stmt; 
         }
 
-        public static function update($id, $nome_marca) {
+        public static function update($id, $nome_marca, $id_usuario) {
             $con = ConnectionFactory::getConnection();
 
-            $stmt = $con->prepare("UPDATE marcas SET nome=:nome WHERE id=:id");
+            $stmt = $con->prepare("UPDATE marcas SET nome=:nome, id_usuario=:id_usuario WHERE id=:id");
             $stmt->bindParam(':nome', $nome_marca, PDO::PARAM_STR);
+            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
